@@ -1,0 +1,60 @@
+<section id="cart-table">
+    <div class="cart-table-item">
+        <div class="cart-header pt-3 row align-items-center">
+            <div class="col-lg-1">
+                <p></p>
+            </div>
+            <div class="col-lg-5">
+                <p>Product</p>
+            </div>
+            <div class="col-lg-2">
+                <p>Price</p>
+            </div>
+            <div class="col-lg-2">
+                <p>QTY</p>
+            </div>
+            <div class="col-lg-2">
+                <p>Total</p>
+            </div>
+        </div>
+
+        <div class="cart-body" *ngFor="let item of basket">
+            <div class="row align-items-center">
+                <div (click)="removeItem(item.product.id)" class="col-lg-1 cart-remove-icon text-center">
+                    <p class="bi bi-trash"></p>
+                </div>
+                <div class="col-lg-5">
+                    <div class="product-img-area">
+                        <img [src]="item.product.photos[0]" width="152px" height="190px" alt="">
+                        <span class="product-name ps-3">{{item.product.name}}</span>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <span class="price">${{item.product.price}}</span>
+                </div>
+                <div class="col-lg-2">
+                    <span>{{item.count}}</span>
+                </div>
+                <div class="col-lg-2">
+                    <span class="subtotal">{{item.count |totalProductPrice :item.product.price}} ₼</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row pt-4 buttons align-items-center">
+        <div class="col-lg-6">
+            <a [routerLink]="['/checkout']" class="checkout-button">
+                Proceed to checkout
+            </a>
+
+        </div>
+        <div class="col-lg-6 d-flex justify-content-end">
+            <a [routerLink]="['/collections']" class="shopping-button">
+                Continue shopping
+            </a>
+        </div>
+
+    </div>
+
+</section>

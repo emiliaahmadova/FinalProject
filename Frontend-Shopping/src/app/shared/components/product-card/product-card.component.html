@@ -1,0 +1,13 @@
+<div class="arrival-card">
+  <div class="card-body">
+    <img width="100%" height="100%" [src]="product.photos[0]" alt="">
+    <app-discover-button [link]="'/product/'+product.id"></app-discover-button>
+  </div>
+  <div class="card-footer">
+
+    <a class="footer-subtitle">{{product.name}}</a>
+    <div class="footer-price">
+      <span>${{product.price}}</span>
+    </div>
+  </div>
+</div>

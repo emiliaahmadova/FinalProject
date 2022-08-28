@@ -1,0 +1,15 @@
+<section id="note-area">
+    <div class="note-area-item">
+        <div class="note-area-body p-4">
+            <div class="total d-flex justify-content-between align-items-center">
+                <span class="total-title">TOTAL:</span>
+                <span class="total-subtitle">
+                    <ng-container *ngIf="basket">
+                        ${{basket|totalPrice}}
+                    </ng-container>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</section>

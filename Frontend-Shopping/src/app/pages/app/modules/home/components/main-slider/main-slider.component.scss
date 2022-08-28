@@ -1,0 +1,63 @@
+#main-slider {
+    padding-top: 100px;
+
+    .slider-item {
+        position: relative;
+
+        .content {
+             color:rgb(255, 255, 255);
+            text-transform: uppercase;
+            max-width: 500px;
+            word-wrap: break-word;
+            position: absolute;
+            top: 250px;
+            left: 150px;
+
+            .discount {
+                font-size: 34px;
+                font-weight: 900;
+                font-style: italic;
+            }
+
+            .title,
+            .subtitle {
+               font-size: 30px;
+                font-style: italic;
+                font-weight: bold;
+            }
+        }
+
+        .main-slider-button {
+            background-color: white;
+            color: black;
+            border: 1px solid #5b5b5b;
+            transform: skew(-22deg);
+            padding: 15 23px;
+            outline: none;
+            font-weight: bold;
+        }
+    }
+
+
+}
+
+@media only screen and (max-width: 768px) {
+    #main-slider {
+        height: 200px;
+        .content {
+            max-width: 250px !important;
+   
+            top: 70px !important;
+            left: 20px !important;
+            .title, .subtitle { 
+                font-size: 20px !important;
+            }
+            .discount {
+                font-size: 10px !important;
+            }
+            .main-slider-button {
+               display: none;
+            }
+        }
+    }
+}

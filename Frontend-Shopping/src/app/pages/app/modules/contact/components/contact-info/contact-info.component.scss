@@ -1,0 +1,28 @@
+#contact-info {
+    padding-top: 100px;
+    padding-bottom: 80px;
+  .card-item {
+    .card-title {
+        font-weight: bold;
+        padding-bottom: 20px;
+        font-size: 14px;
+    }
+    .card-body:not(.card-body.social-medias) {
+        height: 70px;
+        color: #747474;
+        font-size: 15px;
+       
+    }
+    .card-body.social-medias {
+        font-size: 20px;
+        i{
+               padding-left: 10px;
+        }
+     
+    }
+    .card-footer {
+        font-size: 14px;
+        color: black;
+    }
+  }
+}

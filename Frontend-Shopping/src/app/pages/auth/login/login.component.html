@@ -1,0 +1,50 @@
+<section id="login" class="mt-5">
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="d-flex align-items-center justify-content-between">
+          <span class="title">SIGN IN</span>
+          <a [routerLink]="['']" class="btn mt-3">GO TO MAIN</a>
+
+        </div>
+
+        <!-- [formGroup]="loginForm" (ngSubmit)="submit()" -->
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <div class="mt-3">
+            <span>Insert your account information:</span>
+          </div>
+          <div class="form-group">
+            <input type="email" name="mail" formControlName="mail" class="form-control mt-3" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Email">
+            <div *ngIf="submitted && f['mail'].errors" class="text-danger">
+              <div *ngIf="f['mail'].errors['required']">Email cannot be empty</div>
+              <div *ngIf="f['mail'].errors['email']">Email or password is incorrect</div>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" formControlName="password" class="form-control mt-3"
+              id="exampleInputPassword1" placeholder="Password">
+            <div *ngIf="submitted && f['password'].errors" class="text-danger">
+              <div *ngIf="f['password'].errors['required']">Password cannot be empty</div>
+              <!-- <div *ngIf="f['password'].errors['email']">Elektron poçt düzgün formatda deyil</div> -->
+            </div>
+          </div>
+          <div class="register mt-3">
+            <a [routerLink]="['/auth/forget-password']">Forgot Password?</a>
+          </div>
+          <div class="register mt-1">
+            If you haven't an account, please <a [routerLink]="['/auth/register']">Register Here</a>
+          </div>
+
+          <button type="submit" class="btn login-button mt-3">LOGIN</button>
+        </form>
+
+
+
+      </div>
+    </div>
+
+  </div>
+</section>

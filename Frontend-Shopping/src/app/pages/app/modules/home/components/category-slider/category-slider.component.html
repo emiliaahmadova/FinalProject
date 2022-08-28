@@ -1,0 +1,46 @@
+<section id="category">
+  <div class="container">
+    <ng-container *ngIf="!productsSlider"></ng-container>
+
+    <ng-container *ngIf="productsSlider">
+      <div class="row align-items-center">
+        <div class="col-lg-4">
+          <div class="category-content">
+            <h3 class="title">
+              {{productsSlider.name}}
+            </h3>
+            <h5 class="subtitle">{{productsSlider.subtitle}}</h5>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide *ngFor="let productSliderItem of productsSlider.productSliderItems">
+              <a [routerLink]="['/product',productSliderItem.productId]">
+                <div class="category-card">
+                  <div class="card-body">
+                    <div class="card-img">
+                      <img [src]="productSliderItem.product.photos[0]" alt="">
+                    </div>
+
+                  </div>
+                  <div class="card-footer">
+                    <div class="card-title">
+                      <h5>{{productSliderItem.product.name}}</h5>
+                    </div>
+                    <div class="card-subtitle">
+                      <p>{{productSliderItem.product.price}}</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </ng-template>
+
+          </owl-carousel-o>
+
+
+        </div>
+      </div>
+    </ng-container>
+
+  </div>
+</section>

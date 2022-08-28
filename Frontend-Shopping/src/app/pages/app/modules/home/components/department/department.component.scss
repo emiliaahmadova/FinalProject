@@ -1,0 +1,31 @@
+#department {
+    .department-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        .department-item {
+            max-width: 259.2px;
+            position: relative;
+            cursor: pointer;
+            .content {
+                position: absolute;
+                bottom: 30px;
+                left: 10px;
+                color: white;
+                writing-mode: tb;
+                transform: rotate(180deg);
+                .title {
+                    font-weight: 900;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        .department-wrapper {
+            .department-item {
+                max-width: 406px;
+            }
+            display: block;
+        }
+    }
+}

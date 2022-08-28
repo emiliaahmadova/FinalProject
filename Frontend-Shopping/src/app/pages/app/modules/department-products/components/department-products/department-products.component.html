@@ -1,0 +1,19 @@
+<app-breadcrumb [BreadCrumbTitle]="departamentName"></app-breadcrumb>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <app-filter (filteredProductsEvent)="getFilteredProducts($event)" [selectedDepartmentId]="departmentId"
+                [routeChanged]="routeChanged">
+            </app-filter>
+        </div>
+        <div class="col-lg-9">
+            <section id="collection-products" class="mt-3">
+                <div class="row g-5">
+                    <div class="col-lg-4" *ngFor="let product of products">
+                        <app-product-card [product]="product"></app-product-card>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

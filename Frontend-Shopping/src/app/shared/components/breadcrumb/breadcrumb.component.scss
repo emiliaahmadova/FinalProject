@@ -1,0 +1,30 @@
+#breadcrumb {
+    max-height: fit-content;
+    .breadcrumb-img {
+        background-image: url(/assets/images/breadcrumb/breacrumb_index1_1920x.webp);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        padding-block: 100px;
+        .content {
+            .page-routing {
+                text-transform: capitalize;
+            }
+            .name-of-page {
+                text-transform: uppercase;
+                font-size: 32px;
+                font-style: italic;
+                font-weight: 900;
+            }
+        }
+    }
+    .breadcrumb-img::before {
+        content: "";
+        width: 100%;
+        height: 367px;
+        position: absolute;
+        top: 0;
+        background: rgba(0, 0, 0, 25%);
+    }
+    margin-top: 80px;
+}

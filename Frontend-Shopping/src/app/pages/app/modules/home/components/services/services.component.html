@@ -1,0 +1,17 @@
+<section id="service">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3  service-item d-flex align-items-center justify-content-center"
+                *ngFor="let offer of offers">
+                <div class="service-icon">
+                    <i class="bi bi-{{offer.icon}}"></i>
+
+                </div>
+                <div class="service-item-content">
+                    <h6 class="title">{{offer.name}}</h6>
+                    <p class="subtitle">{{offer.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

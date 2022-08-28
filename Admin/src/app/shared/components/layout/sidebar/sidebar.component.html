@@ -1,0 +1,49 @@
+<ul class="navbar-nav  sidebar accordion" id="accordionSidebar" style="background-color:#3C4B64; color: white;">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center  justify-content-center" style="background-color:#303C54 ;"
+        href="index.html">
+
+        <div class="sidebar-brand-text" style="color: white; font-weight: 700;">Sport Shopping</div>
+    </a>
+
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['']">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#shopping" aria-expanded="true"
+            aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>SHOP</span>
+        </a>
+        <div id="shopping" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header" style="font-weight: 700;">SHOP</h6>
+
+                <a class="collapse-item" [routerLink]="['/department']">Department</a>
+                <a class="collapse-item" [routerLink]="['/category']">Category</a>
+                <a class="collapse-item" [routerLink]="['/product']">Product</a>
+                <a class="collapse-item" [routerLink]="['/brand']">Brand</a>
+                <a class="collapse-item" [routerLink]="['/offer']">Services</a>
+                <a class="collapse-item" [routerLink]="['/about']">About</a>
+                <a class="collapse-item" [routerLink]="['/contact']">Contact</a>
+                <a class="collapse-item" [routerLink]="['/settings']">Settings</a>
+                <a class="collapse-item" [routerLink]="['/settings-slider']">Settings Slider</a>
+                <a class="collapse-item" [routerLink]="['/product-slider']">Product Slider</a>
+            </div>
+        </div>
+    </li>
+
+
+
+</ul>

@@ -1,0 +1,45 @@
+#note-area {
+    padding-left: 20px;
+    padding-top: 40px;
+    .note-area-item {
+        border: 1px solid #eaeaea;
+        .note-area-heading {
+            font-size: 13px;
+            font-weight: 700;
+            color: gray;
+        }
+        .note-area-body {
+            background-color: #f2f2f2;
+            .total {
+                .total-title {
+                    font-size: 17px;
+                    font-weight: 700;
+                }
+                .total-subtitle {
+                    font-size: 22px;
+                    font-weight: 900;
+                }
+            }
+            .shipping {
+                .shipping-title {
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+                .shipping-subtitle {
+                    font-size: 12px;
+                }
+            }
+            .text-area {
+                textarea {
+                    border: #eaeaea;
+                }
+                .text-area-title {
+                    font-weight: 700;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+
+}

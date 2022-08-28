@@ -1,0 +1,13 @@
+<app-breadcrumb BreadCrumbTitle = "SHOPPING CART"></app-breadcrumb>
+
+<div class="container">
+    <div class="row pt-5">
+        <div class="col-lg-8 px-0">
+            <app-product-table [basket]="basket" (removeBaskeEvent)="removeBasket($event)"></app-product-table>
+        </div>
+        <div class="col-lg-4">
+            <app-note-area [basket]="basket"></app-note-area>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,15 @@
+.discover-button {
+    position: absolute;
+    left: 25px;
+    bottom: 20px;
+    background-color: white;
+    color: black;
+    outline: none;
+    border: none;
+}
+.discover-button:hover {
+    background-color: black;
+    color: white;
+    box-shadow: none;
+    border-color: transparent;
+}

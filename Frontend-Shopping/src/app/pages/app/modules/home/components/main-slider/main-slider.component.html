@@ -1,0 +1,29 @@
+<section id="main-slider">
+   <div class="container-fluid p-0">
+
+      <owl-carousel-o [options]="customOptions">
+         <ng-template carouselSlide *ngFor="let slider of mainSlider">
+            <div class="slider-item">
+               <div class="content">
+                  <div>
+                     <h2 class="discount">{{slider.title}}</h2>
+                  </div>
+                  <div class="pb-lg-5 pb-md-0">
+                     <h3 class="title">{{slider.subtitle}}</h3>
+                  </div>
+                  <div >
+                     <p class="subtitle">{{slider.content}}</p>
+                  </div>
+
+                  <div class="pt-lg-5 pt-md-0">
+                     <a [routerLink]="['/department',2]" class="btn main-slider-button"><span>SHOP WOMEN</span></a>
+                     <a [routerLink]="['/department',1]" class="btn main-slider-button ms-2"><span>SHOP MEN</span></a>
+                  </div>
+               </div><img [src]="slider.filePath" width="100%" height="100%" alt="">
+            </div>
+         </ng-template>
+
+      </owl-carousel-o>
+
+   </div>
+</section>

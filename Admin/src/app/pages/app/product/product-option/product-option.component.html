@@ -1,0 +1,167 @@
+<div class="container product-option">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <button (click)="resetForm()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#create">
+                Create Product Option
+            </button>
+            <h4 class="text-center py-3">PRODUCT OPTIONS</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Sku</th>
+                        <th>Type</th>
+                        <th>Settings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let productOption of productOptions">
+                        <td>{{productOption.id}}</td>
+                        <td>{{productOption.title}}</td>
+                        <td>{{productOption.sku}}</td>
+                        <td>
+                            <ng-container *ngIf="productOption.type==productOptionType.Color">
+                                Color
+                            </ng-container>
+
+                            <ng-container *ngIf="productOption.type==productOptionType.Size">
+                                Size
+                            </ng-container>
+
+                        </td>
+                        <td class="d-flex justify-content-between align-items-center">
+                            <span class="settings">
+                                <button type="button" (click)="getSelectedProductOption(productOption)"
+                                    data-bs-toggle="modal" data-bs-target="#create" class="btn btn-warning text-white">
+                                    Update
+                                </button>
+                                <button (click)="remove(productOption.id)" class="btn btn-danger ms-2 ">
+                                    Delete
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    {{formControls['id'].value?"Create":"Update"}}
+                </h5>
+                <button id="close-add" type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="submit()">
+                    <div class="form-group">
+                        <label>Title
+                            <span class="text-danger">*</span></label>
+                        <input name="title" formControlName="title" type="text" class="form-control"
+                            placeholder="Content">
+                        <div *ngIf="submitted && formControls['title'].errors" class="text-danger">
+                            <div *ngIf="formControls['title'].errors['required']">Title cannot be empty
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group pt-3">
+                        <label>Sku
+                            <span class="text-danger">*</span></label>
+                        <input name="sku" formControlName="sku" type="text" class="form-control" placeholder="Content">
+                        <div *ngIf="submitted && formControls['sku'].errors" class="text-danger">
+                            <div *ngIf="formControls['sku'].errors['required']">Sku cannot be empty</div>
+                        </div>
+                    </div>
+                    <div class="form-group pt-3">
+                        <label>Order <span class="text-danger">*</span></label>
+                        <input name="order" formControlName="order" type="number" class="form-control"
+                            placeholder="Order">
+                        <div *ngIf="submitted && formControls['order'].errors" class="text-danger">
+                            <div *ngIf="formControls['order'].errors['required']">Order cannot be empty</div>
+                        </div>
+
+                    </div>
+                    <div class="form-group pt-3">
+                        <label>Type<span class="text-danger">*</span></label>
+                        <select name="type" formControlName="type" class="form-control">
+                            <option [value]="productOptionType.Color">Color
+                            </option>
+                            <option [value]="productOptionType.Size">Size
+                            </option>
+
+                        </select>
+                        <div *ngIf="submitted && formControls['type'].errors" class="text-danger">
+                            <div *ngIf="formControls['type'].errors['required']">Type cannot be empty</div>
+                        </div>
+                    </div>
+
+                    <ng-container #optionFormContent>
+                        <h2>ProductOption</h2>
+                        <div class="w-100 d-flex justify-content-end">
+                            <button type="button" (click)="addOptionForm()" class="btn btn-info btn-sm">+</button>
+                        </div>
+
+
+                        <ng-container formArrayName="productOptionItems">
+
+                            <ng-container *ngFor="let item of optionFormArray.controls; let i = index">
+
+                                <ng-container [formGroupName]="i">
+
+                                    <div class="form-group pt-3">
+                                        <label>Order
+                                            <span class="text-danger">*</span></label>
+                                        <input name="Order" formControlName="order" type="number" class="form-control"
+                                            placeholder="Content">
+                                        <!-- <div *ngIf="submitted && i['order'].errors" class="text-danger">
+                                            <div *ngIf="i['order'].errors['required']">Order cannot be empty
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <ng-container *ngIf="formControls['type'].value==productOptionType.Color">
+                                        <label class="form-label">Color</label>
+                                        <input type="color" class="form-control form-control-color"
+                                            formControlName="value" value="#563d7c" title="Choose your color">
+                                    </ng-container>
+                                    <ng-container *ngIf="formControls['type'].value==productOptionType.Size">
+                                        <div class="form-group pt-3">
+                                            <label>Value <span class="text-danger">*</span></label>
+                                            <input name="value" formControlName="value" type="text" class="form-control"
+                                                placeholder="value">
+                                            <!-- <div *ngIf="submitted && i['value'].errors" class="text-danger">
+                                                <div *ngIf="i['value'].errors['required']">Value cannot be empty
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </ng-container>
+
+
+                                </ng-container>
+
+                                <hr>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+
+
+
+
+                    <button type="submit" class="btn mt-3  btn-success w-100">
+                        {{formControls['id'].value?"Update":"Create"}}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

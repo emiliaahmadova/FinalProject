@@ -1,0 +1,38 @@
+<section id="register" class="mt-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="d-flex align-items-center justify-content-between">
+          <span class="title">CREATE AN ACCOUNT</span>
+          <a [routerLink]="['']" class="btn  mt-3">GO TO MAIN</a>
+
+        </div>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <div class="form-group">
+            <input type="text" class="form-control mt-3" placeholder="Full Name" formControlName="fullname">
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="phone" formControlName="phone" class="form-control mt-3" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Phone">
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" formControlName="email" class="form-control mt-3" id="exampleInputEmail1"
+              aria-describedby="emailHelp" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" formControlName="password" class="form-control mt-3"
+              id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="login mt-3">
+            If you have an account, please <a [routerLink]="['auth/login']">Login Here</a>
+          </div>
+          <button type="submit" class="btn register-button mt-3">REGISTER</button>
+        </form>
+
+
+      </div>
+    </div>
+
+  </div>
+</section>

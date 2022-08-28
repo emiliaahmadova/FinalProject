@@ -1,0 +1,112 @@
+#product-info {
+    padding-top: 100px;
+.category-name {
+    text-transform: uppercase;
+}
+    .small-product-img {
+        width: 100%;
+        border: none;
+        background: transparent;
+    }
+
+    .product-info-item {
+        .size {
+            .size-type {
+                text-transform: uppercase;
+                cursor: pointer;
+                border: 1px solid black;
+                padding-block: 7px;
+                padding-inline: 15px;
+                margin-left: 10px;
+
+                &:hover {
+                    background-color: black;
+                    color: white;
+                    transition: 0.5 ease;
+                }
+            }
+
+            .active {
+                background-color: black;
+                color: white;
+            }
+        }
+
+        .add-to-cart {
+            text-decoration: none;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            background-color: black;
+            outline: none;
+            color: white;
+        }
+
+        .title {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .price-rating {
+            .price {
+                font-size: 26px;
+                font-weight: 700;
+            }
+
+            .rating {
+                i {
+                    padding-left: 4px;
+                }
+            }
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #747474;
+        }
+
+        .detail {
+            .detail-label {
+                letter-spacing: 1px;
+                font-size: 16px;
+                font-weight: 700;
+            }
+
+            .detail-info {
+                text-decoration: none;
+                color: black;
+                font-size: 12px;
+                font-weight: 700;
+                padding-left: 10px;
+            }
+        }
+        .product-option {
+            p {
+                font-weight: 700;
+            }
+
+            .badge {
+                border-radius: 50%;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .product-images {
+            padding-bottom: 10px;
+
+            .product-images-item {
+                padding-left: 15px;
+                padding-top: 10px;
+            }
+
+            display: block !important;
+        }
+
+        .product-info-item {
+            padding-left: 0px !important;
+        }
+    }
+}

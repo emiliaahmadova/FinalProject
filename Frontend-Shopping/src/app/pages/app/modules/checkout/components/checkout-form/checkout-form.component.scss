@@ -1,0 +1,55 @@
+#checkout-form {  
+    padding-left: 130px;
+    padding-right: 20px;
+    padding-top: 100px;
+    input:not([type="checkbox"]) {
+        background-color: white;
+        color: #333333;
+        margin-bottom: 10px;
+        font-size: 13px;
+        border-color: #d9d9d9;
+        padding-block: 12px;
+    }
+    .form-check-label {
+        font-size: 14px;
+        color: #545454;
+    }
+ 
+    .heading {
+        font-size: 18px;
+    }
+    .main-body {
+        .contact-info {
+            .header {
+                .login {
+                    font-size: 12px;
+                    a {
+                        text-decoration: none;
+                        padding-left: 5px;
+                    }
+                }
+            }
+        }
+    }
+    .main-footer {
+        .return-to-cart {
+            i,
+            a {
+                text-decoration: none;
+                color: #1990c6;
+                font-size: 14px;
+            }
+        }
+        .footer-button {
+            button {
+                background-color: #23314e;
+                color: white;
+                border-radius: 5px;
+                padding-block: 15px;
+                padding-inline: 20px;
+                border: none;
+                outline: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+<div class="row justify-content-center">
+    <div class="col-sm-12 col-md-3">
+        <div class="dataTables_paginate paging_simple_numbers" id="example1_paginate">
+            <ul class="pagination">
+                <li class="paginate_button page-item previous all">
+                    <a href="#" (click)="getAll($event)" class="page-link">All</a>
+                </li>
+                <li [ngClass]="{ disabled: nextPageNumber == 1 }" class="paginate_button page-item previous"
+                    id="example1_previous">
+                    <a href="#" (click)="previousPage($event)" aria-controls="example1" data-dt-idx="0" tabindex="0"
+                        class="page-link">Prev</a>
+                </li>
+                <ng-container *ngFor="let page of showedPages">
+                    <li style="cursor: pointer;" (click)="getByNumberPage(page)"
+                        [ngClass]="{ active: page == currentPage }" class="paginate_button page-item">
+                        <a class="page-link">{{ page }}</a>
+                    </li>
+                </ng-container>
+
+                <li [ngClass]="{ disabled: currentPage == pages.length }" class="paginate_button page-item next"
+                    id="example1_next">
+                    <a href="#" (click)="nextPage($event)" aria-controls="example1" data-dt-idx="7" tabindex="0"
+                        class="page-link">Next</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="container contact">
+    <div class="row">
+        <div class="col-lg-12">
+            <button (click)="resetForm()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#create">
+                Create Contact
+            </button>
+            <h4 class="text-center py-3">CONTACT</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Content</th>
+                        <th>Map</th>
+                        <th>Settings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let contact of contacts">
+                        <td>{{contact.id}}</td>
+                        <td>{{contact.info}}</td>
+
+                        <td class="d-flex justify-content-between align-items-center">
+                            <span class="settings">
+                                <button type="button" (click)="getSelectedContact(contact)" data-bs-toggle="modal"
+                                    data-bs-target="#create" class="btn btn-warning text-white">
+                                    Update
+                                </button>
+                                <button (click)="remove(contact.id)" class="btn btn-danger ms-2">
+                                    Delete
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal fade contact" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    {{formControls['id'].value?"Update":"Create"}}
+                </h5>
+                <button id="close-add" type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="submit()">
+                    <div class="form-group">
+                        <label>Title
+                            <span class="text-danger">*</span></label>
+                        <input name="info" formControlName="info" type="text" class="form-control" placeholder="info">
+                        <div *ngIf="submitted && formControls['info'].errors" class="text-danger">
+                            <div *ngIf="formControls['info'].errors['required']">Contact Title cannot be empty</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group pt-3">
+                        <label>Order <span class="text-danger">*</span></label>
+                        <input name="order" formControlName="order" type="number" class="form-control"
+                            placeholder="Order">
+                        <div *ngIf="submitted && formControls['order'].errors" class="text-danger">
+                            <div *ngIf="formControls['order'].errors['required']">Contact Order cannot be empty</div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group pt-2">
+                        <label>Settings<span class="text-danger">*</span> </label>
+                        <select name="settingsId" formControlName="settingsId" class="form-control">
+                            <option *ngFor="let setting of settings" [value]="setting.id">
+                                {{setting.privacyPolicy}}
+                            </option>
+
+                        </select>
+                        <div *ngIf="submitted && formControls['id'].errors" class="text-danger">
+                            <div *ngIf="formControls['id'].errors['required']">Department Name cannot be empty</div>
+                        </div>
+                    </div> -->
+                    <button type="submit" class="btn mt-3  btn-success w-100">
+                        {{formControls['id'].value?"Update":"Create"}}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

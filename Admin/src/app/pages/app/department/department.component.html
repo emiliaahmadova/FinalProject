@@ -1,0 +1,86 @@
+<div class="container department">
+    <div class="row">
+        <div class="col-lg-12">
+            <button (click)="resetForm()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#create">
+                Creat Department
+            </button>
+            <h4 class="text-center py-3">DEPARTMENTS</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Settings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let department of departments">
+                        <td>{{department.id}}</td>
+                        <td>{{department.name}}</td>
+                        <td class="d-flex justify-content-between align-items-center">
+                            <span class="settings">
+                                <button type="button" (click)="getSelectedDepartment(department)" data-bs-toggle="modal"
+                                    data-bs-target="#create" class="btn btn-warning text-white">
+                                    Update
+                                </button>
+                                <button (click)="remove(department.id)" class="btn ms-2 btn-danger " href="#">
+                                    Delete
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    {{formControls['id'].value?"Update Department":"Create Department"}}
+                </h5>
+                <button id="close-add" type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="submit()">
+                    <div class="form-group">
+                        <label class="pb-1">Name
+                            <span class="text-danger">*</span></label>
+                        <input name="name" formControlName="name" type="text" class="form-control"
+                            placeholder="Department adı">
+                        <div *ngIf="submitted && formControls['name'].errors" class="text-danger">
+                            <div *ngIf="formControls['name'].errors['required']">Department Name cannot be empty</div>
+                        </div>
+                    </div>
+                    <div class="form-group pt-3">
+                        <label class="pb-1">Order <span class="text-danger">*</span></label>
+                        <input name="name" formControlName="order" type="number" class="form-control"
+                            placeholder="Order">
+                        <div *ngIf="submitted && formControls['order'].errors" class="text-danger">
+                            <div *ngIf="formControls['order'].errors['required']">Department Order cannot be empty</div>
+                        </div>
+                    </div>
+                    <div class="form-group pt-3">
+                        <label class="pb-1">Category <span class="text-danger">*</span></label>
+                        <input name="name" formControlName="category" type="text" class="form-control"
+                            placeholder="category">
+                        <div *ngIf="submitted && formControls['category'].errors" class="text-danger">
+                            <div *ngIf="formControls['category'].errors['required']">Department Category cannot be empty
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="btn btn-success w-100 my-3">{{formControls['id'].value?"Update":"Create"}}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<header>
+  <section id="navbar">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <img src="/assets/images/logo/logo_1ae304d7-ade8-490e-a8cf-529802aa7779_48x.webp" alt="">
+
+          <div class="collapse navbar-collapse nav-menu" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 ms-3 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" [routerLink]="['/']"
+                  [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/about']" routerLinkActive="active"
+                  [routerLinkActiveOptions]="{exact: true}">ABOUT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/collections']" routerLinkActive="active"
+                  [routerLinkActiveOptions]="{exact: true}">PRODUCTS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/department',1]" routerLinkActive="active"
+                  [routerLinkActiveOptions]="{exact: true}">MEN'S</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/department',2]" routerLinkActive="active"
+                  [routerLinkActiveOptions]="{exact: true}">WOMEN'S</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/contact']" routerLinkActive="active"
+                  [routerLinkActiveOptions]="{exact: true}">CONTACT</a>
+              </li>
+            </ul>
+            <div class="d-flex search-form">
+              <input id="search" class="form-control search me-2" (keyup)="search($event.target['value'])"
+                (change)="searchKey=$event.target['value']" type="text" placeholder="Search" aria-label="Search">
+              <button (click)="search()" class="btn search-button" type="button">Search</button>
+
+              <!-- <a [routerLink]="['product/',product.id]" class="products-area" *ngFor="let product of products">
+                <img [src]="product.photos[0]" alt="">
+                <h2>{{product.name}}</h2>
+                <span>${{product.price}}</span>
+              </a> -->
+            </div>
+
+
+          </div>
+          <div class="d-flex nav-icons align-items-center">
+            <a [routerLink]="['/cart']" class="bi bi-bag bag-icon"></a>
+
+
+            <button mat-button [matMenuTriggerFor]="setting"><span
+                class="bi bi-gear gear-icon setting-button fs-5"></span></button>
+            <mat-menu #setting="matMenu">
+              <a [routerLink]="['/auth']" *ngIf="!user" mat-menu-item>Login</a>
+              <button *ngIf="user" mat-menu-item (click)="onLogout()">Logout</button>
+            </mat-menu>
+          </div>
+
+
+
+          <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-button"
+            aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <a class="nav-link active" aria-current="page" [routerLink]="['/']"
+                [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">HOME</a>
+            </button>
+            <button mat-menu-item>
+              <a class="nav-link" [routerLink]="['/about']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">ABOUT</a>
+            </button>
+            <button mat-menu-item>
+              <a class="nav-link" [routerLink]="['/collections']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">PRODUCTS</a>
+            </button>
+            <button mat-menu-item>
+              <a class="nav-link" [routerLink]="['/department',1]" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">MEN'S</a>
+            </button>
+            <button mat-menu-item>
+              <a class="nav-link" [routerLink]="['/department',2]" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">WOMEN'S</a>
+            </button>
+            <button mat-menu-item>
+              <a class="nav-link" [routerLink]="['/contact']" routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">CONTACT</a>
+            </button>
+            <hr>
+            <button mat-menu-item>
+              <a class="nav-link" [routerLink]="['/cart']" [routerLinkActiveOptions]="{exact: true}"
+                routerLinkActive="active">CART</a>
+
+            </button>
+            <button mat-menu-item>
+              <a class="nav-link" [routerLink]="['/auth']" *ngIf="!user"
+             >LOGIN</a>
+            </button>
+      
+            <button *ngIf="user" mat-menu-item (click)="onLogout()">Logout</button>
+          </mat-menu>
+          <ul *ngIf="products.length>0" class="founded-products">
+            <li *ngFor="let product of products">
+              <div>
+                <a href="#" (click)="navigate($event,product.id)">
+                  <img [src]="product.photos[0]" alt="">
+                  <span>{{product.name}} - </span>
+                  <span>${{product.price}}</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+  </section>
+</header>

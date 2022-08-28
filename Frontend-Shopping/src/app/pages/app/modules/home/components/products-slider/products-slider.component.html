@@ -1,0 +1,16 @@
+<section id="new-arrivals">
+  <div class="container">
+    <div class="row">
+      <h2 class="title pb-5">{{producstSlider?.name}}</h2>
+      <div class="col-lg-12 p-0">
+        <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide *ngFor="let productSliderItem of producstSlider?.productSliderItems">
+            <app-product-card [product]="productSliderItem.product"></app-product-card>
+          </ng-template>
+
+
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</section>

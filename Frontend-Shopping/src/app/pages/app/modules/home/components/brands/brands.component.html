@@ -1,0 +1,13 @@
+<section id="brands">
+  <div class="container-fluid p-0">
+    <div class="row align-items-center justify-content-center">
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide *ngFor="let brand of brands">
+          <div class="brand-img d-flex align-items-center p-2">
+            <img [src]="brand.filePath" alt="">
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,107 @@
+<div class="container offer">
+    <div class="row">
+        <div class="col-lg-12">
+            <button (click)="resetForm()" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#create">
+                Create Service
+            </button>
+            <h4 class="text-center py-3">SERVICES</h4>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Settings</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let offer of offers">
+                        <td>{{offer.id}}</td>
+                        <td>{{offer.name}}</td>
+                        <td>{{offer.description}}</td>
+                        <td class="d-flex justify-content-between align-items-center">
+                            <span class="settings">
+                                <button type="button" (click)="getSelectedOffer(offer)" data-bs-toggle="modal"
+                                    data-bs-target="#create" class="btn btn-warning text-white">
+                                    Update
+                                </button>
+                                <button (click)="remove(offer.id)" class="btn btn-danger ms-2">
+                                    Delete
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal fade offer" id="create" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">
+                    {{formControls['id'].value?"Update":"Create"}}
+                </h5>
+                <button id="close-add" type="button" class="btn-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="form" (ngSubmit)="submit()">
+                    <div class="form-group ">
+                        <label>Name
+                            <span class="text-danger">*</span></label>
+                        <input name="name" formControlName="name" type="text" class="form-control" placeholder="Name">
+                        <div *ngIf="submitted && formControls['name'].errors" class="text-danger">
+                            <div *ngIf="formControls['name'].errors['required']">Service Name cannot be empty</div>
+                        </div>
+                    </div>
+                    <div class="form-group pt-3">
+                        <label>Description
+                            <span class="text-danger">*</span></label>
+                        <input name="description" formControlName="description" type="text" class="form-control"
+                            placeholder="description">
+                        <div *ngIf="submitted && formControls['description'].errors" class="text-danger">
+                            <div *ngIf="formControls['description'].errors['required']">Service Description cannot be
+                                empty</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group pt-3">
+                        <label>Order <span class="text-danger">*</span></label>
+                        <input name="name" formControlName="order" type="number" class="form-control"
+                            placeholder="Order">
+                        <div *ngIf="submitted && formControls['order'].errors" class="text-danger">
+                            <div *ngIf="formControls['order'].errors['required']">Service Order cannot be empty</div>
+                        </div>
+                    </div>
+                    <div class="form-group pt-3">
+                        <label>Icon
+                            <span class="text-danger">*</span></label>
+                        <input name="icon" formControlName="icon" type="text" class="form-control" placeholder="icon">
+                        <div *ngIf="submitted && formControls['icon'].errors" class="text-danger">
+                            <div *ngIf="formControls['icon'].errors['required']">Service Icon cannot be empty</div>
+                        </div>
+                    </div>
+                    <div class="form-group pt-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" formControlName="isActive" value=""
+                                id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Active
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn mt-3  btn-success w-100">
+                        {{formControls['id'].value?"Update":"Create"}}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

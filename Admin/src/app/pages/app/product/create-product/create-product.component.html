@@ -1,0 +1,105 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+        <label>Product Name
+            <span class="text-danger">*</span></label>
+        <input name="name" formControlName="name" type="text" class="form-control" placeholder="Product Name">
+        <div *ngIf="submitted && formControls['name'].errors" class="text-danger">
+            <div *ngIf="formControls['name'].errors['required']">Product Name cannot be empty</div>
+        </div>
+    </div>
+    <div class="form-group pt-2">
+        <label>Order<span class="text-danger">*</span></label>
+        <input name="order" formControlName="order" type="number" class="form-control" placeholder="Order">
+        <div *ngIf="submitted && formControls['name'].errors" class="text-danger">
+            <div *ngIf="formControls['name'].errors['required']">Order cannot be empty</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Description
+            <span class="text-danger">*</span></label>
+        <input name="description" formControlName="description" type="text" class="form-control"
+            placeholder="Description">
+        <div *ngIf="submitted && formControls['description'].errors" class="text-danger">
+            <div *ngIf="formControls['description'].errors['required']">Description cannot be empty</div>
+        </div>
+    </div>
+    <div class="form-group pt-2">
+        <label>Price<span class="text-danger">*</span></label>
+        <input name="price" formControlName="price" type="number" class="form-control" placeholder="Price">
+        <div *ngIf="submitted && formControls['price'].errors" class="text-danger">
+            <div *ngIf="formControls['price'].errors['required']">Price cannot be empty</div>
+        </div>
+    </div>
+    <div class="form-group pt-2">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="isAviable"
+                formControlName="isAviable" type="checkbox">
+            <label class="form-check-label" for="flexCheckDefault">
+                Aviable
+                <span class="text-danger">*</span>
+            </label>
+        </div>
+
+        <div *ngIf="submitted && formControls['isAviable'].errors" class="text-danger">
+            <div *ngIf="formControls['isAviable'].errors['required']">Status cannot be empty</div>
+        </div>
+    </div>
+    <div class="form-group pt-2">
+        <label>Department<span class="text-danger">*</span> </label>
+        <select name="departmentId" formControlName="departmentId" class="form-control">
+            <option *ngFor="let department of departments" [value]="department.id">{{department.name}}
+            </option>
+
+        </select>
+        <div *ngIf="submitted && formControls['departmentId'].errors" class="text-danger">
+            <div *ngIf="formControls['departmentId'].errors['required']">Department cannot be empty</div>
+        </div>
+    </div>
+    <div class="form-group pt-2">
+        <label>Category<span class="text-danger">*</span> </label>
+        <select name="categoryId" formControlName="categoryId" class="form-control">
+            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}
+            </option>
+
+        </select>
+        <div *ngIf="submitted && formControls['name'].errors" class="text-danger">
+            <div *ngIf="formControls['name'].errors['required']">Category cannot be empty</div>
+        </div>
+    </div>
+    <div class="form-group pt-2">
+        <label>Brand<span class="text-danger">*</span> </label>
+        <select name="brandId" formControlName="brandId" class="form-control">
+            <option *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}
+            </option>
+
+        </select>
+        <div *ngIf="submitted && formControls['name'].errors" class="text-danger">
+            <div *ngIf="formControls['name'].errors['required']">Brand cannot be empty</div>
+        </div>
+    </div>
+
+    <div class="productPhotos">
+        <ng-container #photoUpload>
+            <!-- <div *ngIf="fileUrl" class="file-area mx-2">
+                <img class="pt-3" [src]="fileUrl" alt="" accept="image">
+            </div> -->
+            <div class="form-group pt-3">
+                <input type="file" accept="image/*" class="form-control form-control-sm" (change)="upload($event)"
+                    multiple>
+            </div>
+            <ng-container *ngIf="photosFormArray.length>0">
+                <div *ngFor="let photos of photosFormArray.controls;let i=index" formArrayName="photos">
+                    <img class="mt-2" src="{{ photosFormArray.controls[i].value.filePath}}" alt="uploaded-photo">
+                    <button (click)="removeUpload(photosFormArray.controls[i].value,i)" type="button"
+                        class="btn btn-danger btn-sm ms-1">Delete</button>
+
+                </div>
+            </ng-container>
+
+            <!-- <a href="#" (click)="removePhoto($event,img.fileName,i)">
+                <i class=" ml-1 fas fa-trash"></i>
+            </a> -->
+        </ng-container>
+    </div>
+    <button type="submit" class="btn btn-success my-3 w-100">Create</button>
+</form>

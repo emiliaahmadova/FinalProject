@@ -1,0 +1,35 @@
+#product-detail-tab {
+    button {
+        color: #b7b7b7;
+        position: relative;
+        outline: none;
+        border: none;
+    }
+    button:after {
+        background: none repeat scroll 0 0 transparent;
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 2px;
+        left: 0;
+        position: absolute;
+        background: #000;
+        transition: width 0.8s ease 0s;
+        width: 0;
+    }
+    button:hover {
+        color: black;
+    }
+    button:hover:after {
+        width: 100%;
+        left: 0;
+    }
+    p,
+    li {
+        color: #747474;
+        font-size: 14px;
+    }
+    .bordered {
+        border-left: 5px solid #747474;
+    }
+}

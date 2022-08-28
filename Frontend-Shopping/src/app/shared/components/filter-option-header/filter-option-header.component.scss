@@ -1,0 +1,19 @@
+.filter-option-header {  
+    padding-block: 12px;
+    .title {
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 15px;
+    }
+    .subtitle {
+        font-size: 13px;
+    }
+    .reset-button {
+      margin-block: 15px;
+        background-color: white;
+        border-radius: 20px;
+        border: 1px solid #aeaeae;
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+}

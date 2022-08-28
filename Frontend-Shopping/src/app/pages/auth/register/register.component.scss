@@ -1,0 +1,39 @@
+#register {
+    form {
+        color: #747474;
+        a {
+            text-decoration: none;
+            color: #6aa1da;
+            font-weight: bold;
+        }
+        .login {
+            font-size: 13px;
+        }
+    }
+    .title {
+        color: black;
+        font-weight: 900;
+        font-style: italic;
+        font-size: 32px;
+        position: relative;
+    }
+
+    .title:after {
+        position: absolute;
+        content: "";
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        width: 170px;
+        background: #aeaeae;
+    }
+
+    .register-button {
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        padding-inline: 25px;
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,74 @@
+<section id="collection-filter">
+    <div class="clear py-3 d-flex align-items-center clear">
+        <i class="bi bi-trash"></i>
+        <button type="button" (click)="reset()" class="ps-2">CLEAR ALL</button>
+    </div>
+    <div class="clear py-3 d-flex align-items-center search">
+        <i class="bi bi-search"></i>
+        <button (click)="search()" type="button" class="ps-2 ">Search</button>
+    </div>
+
+    <hr>
+    <div class="price">
+        <span class="price-title">PRICE</span>
+        <div class="price-from d-flex justify-content-between align-items-center">
+            <span class="price-label">FROM</span>
+            <div class="price-input">
+                <span>
+                    $
+                </span>
+                <input id="min" type="text" placeholder="min"
+                    (change)="filterOptions.minPrice=$event.target['value']>0?$event.target['value']:0">
+            </div>
+
+        </div>
+        <div class="price-to d-flex pt-4 justify-content-between align-items-center">
+            <span class="price-label">TO</span>
+            <div class="price-input ">
+                <span>
+                    $
+                </span>
+                <input id="max" type="text" placeholder="max"
+                    (change)="filterOptions.maxPrice=$event.target['value']>0?$event.target['value']:99999999999">
+            </div>
+
+        </div>
+        <div class="price-reset-button py-4 d-flex justify-content-end">
+        </div>
+    </div>
+    <hr>
+    <div *ngIf="selectedDepartmentId==0" class="department">
+        <app-filter-option-header filterTitle="Department"></app-filter-option-header>
+        <div class="form-check" *ngFor="let department of departments">
+            <input (change)="getDepartmentsValue(department.id)" class="form-check-input" type="checkbox"
+                [value]="department.id" [id]="department.id">
+            <label class="form-check-label" [for]="department.id">
+                {{department.name}}
+            </label>
+        </div>
+
+    </div>
+    <div class="category">
+        <app-filter-option-header filterTitle="Category"></app-filter-option-header>
+        <div class="form-check" *ngFor="let category of categories">
+            <input (change)="getCategoriesValue(category.id)" class="form-check-input" type="checkbox"
+                [value]="category.id" [id]="category.id">
+            <label class="form-check-label" [for]="category.id">
+                {{category.name}}
+            </label>
+        </div>
+
+    </div>
+    <div class="brand">
+        <app-filter-option-header filterTitle="Brand"></app-filter-option-header>
+        <div class="form-check" *ngFor="let brand of brands">
+            <input (change)="getBrandValue(brand.id)" class="form-check-input" type="checkbox" [value]="brand.id"
+                [id]="brand.id">
+            <label class="form-check-label" [for]="brand.id">
+                {{brand.name}}
+            </label>
+        </div>
+
+    </div>
+    <hr>
+</section>
