@@ -1,0 +1,64 @@
+-- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
+--
+-- Host: localhost    Database: shopping
+-- ------------------------------------------------------
+-- Server version	8.0.30
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `UserRoleId` int NOT NULL,
+  `Fullname` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `Email` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `Phone` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `Password` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `Token` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `ForgetPasswordToken` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `Role` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `CreateDate` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `UpdateDate` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `Order` int NOT NULL,
+  `IsActive` tinyint(1) NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `IX_Users_UserRoleId` (`UserRoleId`),
+  CONSTRAINT `FK_Users_UserRole_UserRoleId` FOREIGN KEY (`UserRoleId`) REFERENCES `userrole` (`Id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,1,'Admin','Admin@mail.ru','123456789','AQAAAAEAACcQAAAAEJ/EPNEVzPvkiX0UBL4UA+jtuFh5ko+6OpAH8WNjRDbeQzCp52LYIJeLSdEFpMfZWA==','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkFkbWluQG1haWwucnUiLCJqdGkiOiJmOTE0MzQ5Ny00NjkyLTQyNGItOTM1ZC05ZTcwMzk1YzY0NDQiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbiIsImV4cCI6MTY2NDM1ODQ4OSwiaXNzIjoibXkiLCJhdWQiOiJteSJ9.SeuJMEJSGifZdK-dddAIqB3mn9FkVvAaijInDflqR3g',NULL,'Admin','26-08-2022','26-08-2022',0,0),(2,2,'emiliya','13wyafc@code.edu.az','+994552517273','AQAAAAEAACcQAAAAEDoHeg0UiSKJESWbgYGrY0Cqf8sNhlMk+c6ahHoRv5xippNGDr+JBGJF6r87dKXksw==','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IjEzd3lhZmNAY29kZS5lZHUuYXoiLCJqdGkiOiIzNGE5NzliYi01MGY1LTQwZjMtYjFlYS0zYmYzNTg4Yzk3NGUiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJVc2VyIiwiZXhwIjoxNjY0MTgxODA1LCJpc3MiOiJteSIsImF1ZCI6Im15In0.c-6RFgELBZs2Cfwe6PZxSUzIXXpdtvcmQSF5bgbbLMQ','362baa49-600e-445c-bd16-67e36d46c0fa','User',NULL,NULL,0,0),(3,2,'filankes','ahmadovaelm@gmail.com','+994552517273','AQAAAAEAACcQAAAAEDEotFclMoZxNPCm+9uFUEuVowyEQ4z8jtPyApbEO9KShTBxNozvdckJfpH1N2pVUQ==','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFobWFkb3ZhZWxtQGdtYWlsLmNvbSIsImp0aSI6ImE1Y2FjY2NlLWQ0ZDMtNDJhZS04NzBlLWY0ZjUzOTRhZTVmNSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IlVzZXIiLCJleHAiOjE2NjQzNTk3OTgsImlzcyI6Im15IiwiYXVkIjoibXkifQ.19lygdjkYemUxzBGXyuRm45_o1Jtmidu7mZ2yz6GOV4',NULL,'User',NULL,NULL,0,0);
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-08-28 22:18:04
